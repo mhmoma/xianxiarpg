@@ -93,8 +93,8 @@
     canvas.style.height = `${targetRect.height}px`;
     canvas.style.display = 'block';
     if (canvas.parentElement !== parent) parent.appendChild(canvas);
-    const width = Math.max(1, Math.round(targetRect.width));
-    const height = Math.max(1, Math.round(targetRect.height));
+    const width = Math.max(1, target.width || Math.round(targetRect.width));
+    const height = Math.max(1, target.height || Math.round(targetRect.height));
     if (canvas.width !== width || canvas.height !== height) {
       canvas.width = width;
       canvas.height = height;
