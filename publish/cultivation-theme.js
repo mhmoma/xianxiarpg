@@ -62,7 +62,7 @@
     const season = window.Season?.CONFIG?.[1];
     if (season) Object.assign(season, {
       name: '第一纪元', theme: '太虚裂界', introTitle: '第一纪元：太虚裂界',
-      promo: './assets/generated/cultivation-cover.9b2f3725.webp',
+      promo: './assets/generated/cultivation-cover-landscape.c17ae7e5.webp',
       story: [
         '千年前，太虚天门崩裂，九州灵脉从此昼夜震荡。',
         '近日北斗倒悬，妖雾自古战场涌出，被遗忘的魔尊开始借尸还魂。',

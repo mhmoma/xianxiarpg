@@ -3,7 +3,7 @@
   "name": "eastern cultivation ink fantasy",
   "description": "Chinese xianxia cultivation fantasy blending refined gongbi detail with ink-wash atmosphere, readable top-down action silhouettes, jade talismans, flying swords, spirit fire, cloud seas, ancient sect architecture, and celestial tribulation effects.",
   "palette": ["#07110f", "#123c36", "#2f7668", "#d7b968", "#9f2f2f", "#8fd8d0"],
-  "view": "top-down 3/4 arcade action with vertical cinematic key art",
+  "view": "top-down 3/4 arcade action with wide landscape cinematic key art",
   "outline": "dark ink contour with restrained gold accents",
   "lighting": "moonlit mist, jade spirit glow, cinnabar fire, high readability",
   "avoid": ["text", "logo", "watermark", "western armor", "guns", "churches", "demons", "copyrighted characters", "real brands"]

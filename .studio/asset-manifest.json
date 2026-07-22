@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-06-13T14:08:29Z",
-  "updatedAt": "2026-07-22T07:36:05Z",
+  "updatedAt": "2026-07-22T10:23:49Z",
   "assets": [
     {
       "name": "player-paladin",
@@ -2921,6 +2921,26 @@
       },
       "traceId": "trace_mrvrnwmr_7cyyub6y",
       "createdAt": "2026-07-22T07:36:05Z"
+    },
+    {
+      "name": "cultivation-cover-landscape",
+      "status": "success",
+      "path": "publish/assets/generated/cultivation-cover-landscape.c17ae7e5.webp",
+      "contentHash": "c17ae7e5",
+      "revisedPrompt": "Cinematic Chinese xianxia cultivation fantasy key art for a survivor action game, wide landscape composition. Six distinct Eastern fantasy cultivator heroes stand across a celestial mountain platform above a vast sea of clouds: a powerful golden-robed sacred monk surrounded by protective qi, an elegant jade-robed mystic controlling floating talismans, an azure-robed sword cultivator commanding flying spirit swords, a swift ranger wielding luminous wind blades, a dignified crimson-robed holy maiden wielding lotus spirit fire, and a black-robed crescent-blade maiden surrounded by moonlit soul energy. Ancient sect gates and distant pagodas frame the background, with flying swords, jade energy currents, cinnabar fire, moonlit mist and a colossal celestial rift opening in the sky. Refined gongbi detail blended with dramatic ink-wash atmosphere, epic scale, strong readable silhouettes, polished premium game cover art. Keep the left third relatively calm and darker for an HTML menu overlay while keeping the heroes clearly visible across the center and right. No Western armor, no modern firearms, no churches, no UI. Wide composition, no text, no logo, no watermark.",
+      "model": "gpt-image-2",
+      "size": "1807x870",
+      "wantsTransparent": false,
+      "outputFormat": "webp",
+      "compressionProfile": "lossy_q80_opaque",
+      "originalBytes": 2702110,
+      "finalBytes": 213112,
+      "usage": {
+        "inputTokens": 237,
+        "outputImageTokens": 986
+      },
+      "traceId": "trace_mrvxlrmu_moyqlu2g",
+      "createdAt": "2026-07-22T10:23:49Z"
     }
   ]
 }
