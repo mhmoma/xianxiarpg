@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-06-13T14:08:29Z",
-  "updatedAt": "2026-07-22T11:52:24Z",
+  "updatedAt": "2026-07-22T11:55:47Z",
   "assets": [
     {
       "name": "loading-runner",
@@ -126,32 +126,6 @@
       },
       "traceId": "trace_mql47vry_mim6zzae",
       "createdAt": "2026-06-19T16:01:36Z"
-    },
-    {
-      "name": "gunslinger-fx-sheet",
-      "status": "success",
-      "path": "publish/assets/generated/gunslinger/gunslinger-fx-sheet.1f03eaca.webp",
-      "contentHash": "1f03eaca",
-      "revisedPrompt": "Sprite sheet for a magical gunslinger combat effects pack for an arcade fantasy survivor game. Arrange separate readable effect icons and small animation frames in a clean grid, evenly spaced, centered, with transparent-looking item silhouettes replaced by a solid uniform chroma key background color #00B140 filling every pixel not occupied by the effects. Include: silver bullet streaks, twin muzzle flashes, ricochet star sparks, shotgun cone blast, dust roll smoke, small orange fire bomb burst. No characters, no text, no logo, no watermark. High contrast, glowing magic, clean dark outline, dark red / silver / gold palette. Pure flat background only, no gradient, no shadow, no texture, no scenery, no ground, no decoration, no environmental elements. Exactly a single uniform flat #00B140 green screen background.",
-      "model": "gpt-image-2",
-      "size": "1536x1024",
-      "wantsTransparent": true,
-      "chromaKey": {
-        "color": "#00B140",
-        "alphaZeroPct": 83,
-        "edgeGreenBiasPct": 0,
-        "verdict": "PASS"
-      },
-      "outputFormat": "webp",
-      "compressionProfile": "lossy_q85_alpha",
-      "originalBytes": 1856752,
-      "finalBytes": 206522,
-      "usage": {
-        "inputTokens": 171,
-        "outputImageTokens": 1372
-      },
-      "traceId": "trace_mqum7cyx_70rbdgz9",
-      "createdAt": "2026-06-26T07:34:57Z"
     },
     {
       "name": "ground-wilds",
