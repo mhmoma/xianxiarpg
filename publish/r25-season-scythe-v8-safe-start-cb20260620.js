@@ -4,23 +4,23 @@ window.GameModules.season = (() => {
   const KEY = 'arcane-season-state-v2';
   const CONFIG = {
     1: {
-      name: '第一赛季',
-      theme: '深渊初醒',
+      name: '第一纪元',
+      theme: '太虚裂界',
       levelCap: 20,
-      introTitle: '第一赛季：深渊初醒',
+      introTitle: '第一纪元：太虚裂界',
       promo: './assets/generated/cultivation-cover-landscape.c17ae7e5.webp',
       story: [
-        '王城的第一口钟是在午夜自己响起来的。钟声落下时，地面裂开，紫黑色的火从井口、墓穴和旧矿道里一起冒出。',
-        '第二天清晨，巡逻队只带回一副盔甲。盔甲还在动，里面却没有人，胸口嵌着一块会呼吸的深渊结晶。',
-        '从那以后，遗迹里的剑会低声说话，霜原上的靴印会自己延伸，荒野的宝箱里爬出带血的王冠。每一件装备都更强，也更危险。',
-        '你要从零开始，把这些诅咒一件件抢回来、净化、穿上，然后在深渊彻底醒来之前，把裂隙另一头的魔王拖出来。'
+        '千年前，太虚天门崩裂，九州灵脉从此昼夜震荡。',
+        '近日北斗倒悬，妖雾自古战场涌出，被遗忘的魔尊开始借尸还魂。',
+        '各大仙门开启山门，体修、符修、剑修、灵修、魂修与天工弟子同时下山应劫。',
+        '你将从炼气起步，夺灵器、悟功法、炼法宝，在天劫降临前踏出自己的长生大道。'
       ],
       intro: [
-        '混沌地域裂隙开启，魔王军团正式入侵。',
-        '本赛季等级上限为 20，赛季等级从 1 开始。',
-        '当前赛季装备仓库、穿戴与战斗存档全部从 0 开始。',
-        '击败 Boss 可获得污染装备，净化后进入本赛季仓库。',
-        '装备拥有佩戴等级要求，提升赛季等级后可穿戴更高阶装备。'
+        '太虚裂界开启，九州妖潮正式入侵。',
+        '本纪元修为上限为 20，所有道途从炼气初境开始。',
+        '纪元灵器阁、穿戴与战斗轮回录从新的仙缘起点展开。',
+        '击败首领可获得魔染灵器，在淬炼祭坛洗去魔气。',
+        '提升纪元修为后，可驾驭更高品阶的灵器与法宝。'
       ]
     }
   };
@@ -44,7 +44,7 @@ window.GameModules.season = (() => {
   async function save(){await kvPut(KEY,state)}
   async function addRunXp(run){await init();if(!started())return null;let old=level();await applyServerState(await callServer('runXp',run));let cur=season();return {gain:Math.max(0,cur.lastGain||0),level:cur.level,xp:cur.xp,next:need(cur.level),ups:Math.max(0,cur.lastUps??cur.level-old)}}
   async function grantLevel(target){await init();console.warn('客户端赛季等级直升已禁用');return{level:level(),ups:0}}
-  function introHtml(){let c=cfg(),story=(c.story||[]).map((x,i)=>`<p class="seasonStoryLine" style="--i:${i}">${x}</p>`).join(''),rules=(c.intro||[]).map(x=>`<p>${x}</p>`).join(''),bg=c.promo?` style="--season-bg:url('${c.promo}')"`:'';return `<div class="seasonBg"${bg}></div><div class="seasonIntroHead"><h1 class="title">${c.introTitle}</h1><p class="sub">主题：${c.theme}</p></div><div class="seasonStoryBox"><b>赛季背景播放中</b>${story}</div><div class="seasonRules">${rules}</div><div class="seasonStartBar"><button id="seasonStartBtn" class="startBtn" type="button">开启${c.name}</button></div>`}
+  function introHtml(){let c=cfg(),story=(c.story||[]).map((x,i)=>`<p class="seasonStoryLine" style="--i:${i}">${x}</p>`).join(''),rules=(c.intro||[]).map(x=>`<p>${x}</p>`).join(''),bg=c.promo?` style="--season-bg:url('${c.promo}')"`:'';return `<div class="seasonBg"${bg}></div><div class="seasonIntroHead"><h1 class="title">${c.introTitle}</h1><p class="sub">主题：${c.theme}</p></div><div class="seasonStoryBox"><b>纪元背景</b>${story}</div><div class="seasonRules">${rules}</div><div class="seasonStartBar"><button id="seasonStartBtn" class="startBtn" type="button">开启${c.name}</button></div>`}
   return { CURRENT, CONFIG, init, reload, started, start, cfg, season, level, xp, cap, need, key, addRunXp, grantLevel, introHtml };
 })();
 window.Season = window.GameModules.season;

@@ -61,24 +61,6 @@
       node[2] = rewrite(node[2]);
     });
     walk(window.BUILDS); walk(window.BUILD_GUIDE); walk(window.RIFT_EXTRA_BUILDS);
-    const season = window.Season?.CONFIG?.[1];
-    if (season) Object.assign(season, {
-      name: '第一纪元', theme: '太虚裂界', introTitle: '第一纪元：太虚裂界',
-      promo: './assets/generated/cultivation-cover-landscape.c17ae7e5.webp',
-      story: [
-        '千年前，太虚天门崩裂，九州灵脉从此昼夜震荡。',
-        '近日北斗倒悬，妖雾自古战场涌出，被遗忘的魔尊开始借尸还魂。',
-        '各大仙门开启山门，体修、符修、剑修、灵修、魂修与天工弟子同时下山应劫。',
-        '你将从炼气起步，夺灵器、悟功法、炼法宝，在天劫降临前踏出自己的长生大道。'
-      ],
-      intro: [
-        '太虚裂界开启，九州妖潮正式入侵。',
-        '本纪元修为上限为 20，所有道途从炼气初境开始。',
-        '纪元灵器阁、穿戴与战斗轮回录从新的仙缘起点展开。',
-        '击败首领可获得魔染灵器，在淬炼祭坛洗去魔气。',
-        '提升纪元修为后，可驾驭更高品阶的灵器与法宝。'
-      ],
-    });
     const equipData = window.GameModules?.equipData;
     if (equipData) walk(equipData);
     if (window.Equipment) {
