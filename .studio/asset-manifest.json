@@ -1,7 +1,7 @@
 {
   "version": 1,
   "createdAt": "2026-06-13T14:08:29Z",
-  "updatedAt": "2026-07-22T11:55:47Z",
+  "updatedAt": "2026-07-22T14:34:09Z",
   "assets": [
     {
       "name": "loading-runner",
@@ -1376,6 +1376,32 @@
       },
       "traceId": "trace_mrw0ljwo_f2adxa9r",
       "createdAt": "2026-07-22T11:45:40Z"
+    },
+    {
+      "name": "cultivation-class-relics-sheet",
+      "status": "success",
+      "path": "publish/assets/generated/cultivation-class-relics-sheet.dafb8afe.webp",
+      "contentHash": "dafb8afe",
+      "revisedPrompt": "Polished Chinese xianxia cultivation fantasy game item sprite atlas, refined gongbi detail blended with restrained ink-wash atmosphere, top-down three-quarter view, dark ink contours, jade spirit glow, cinnabar red, moonlit cyan and restrained antique gold. Create EXACTLY six isolated class-bound cultivation treasures arranged in a strict 3 columns by 2 rows grid. Every cell is equal size, every treasure is centered and fully contained inside its own cell with generous clear padding, and nothing crosses cell boundaries. Exact order left to right, top to bottom: 1) Golden Vajra Demon-Subduing Seal, a heavy ancient gold and black-jade ritual seal with cloud-scroll edges and a calm circular protective qi halo, for a body cultivator; 2) Myriad Talisman Taiyi Scripture, an elegant open jade-bound Daoist scripture with floating cinnabar paper talismans and pale gold rune-light, for a talisman master; 3) Azure Seven-Star Sword Casket, a long blue-jade sword box with seven small spirit swords orbiting in a disciplined formation, for a flying-sword cultivator; 4) Red Dust Lotus Mirror, a dignified bronze hand mirror framed by crimson silk ribbons, peach petals and lotus fire, graceful and non-explicit, for a red-dust spirit cultivator; 5) Nine Nether Soul Lantern, a black-jade ritual lantern containing cyan ghost flame, framed by a slender indigo crescent soul blade and sealing chains, for a nether soul cultivator; 6) Tiangong Myriad-Mechanism Wheel, an intricate bronze-and-jade celestial mechanism disk with interlocking rings, tiny spiritual crossbows and cinnabar energy nodes, ancient cultivation machinery only, for a mechanism cultivator. No characters, no scenery, no UI, no frame borders, no Western crosses, no Western armor, no demons, no skulls, no guns, no bullets, no modern technology. Strictly placed on a SOLID UNIFORM #00B140 chroma key flat color background. The background is a single uniform shade of #00B140 chroma key green that fills 100% of pixels not occupied by the six treasures. No gradient, no shadow, no texture, no scenery, no ground, no decoration, no environmental elements. Pure flat color background, exactly like a green screen used for VFX compositing. No text, no letters, no numbers, no logo, no watermark.",
+      "model": "gpt-image-2",
+      "size": "1536x1024",
+      "wantsTransparent": true,
+      "chromaKey": {
+        "color": "#00B140",
+        "alphaZeroPct": 58.2,
+        "edgeGreenBiasPct": 0,
+        "verdict": "PASS"
+      },
+      "outputFormat": "webp",
+      "compressionProfile": "lossy_q85_alpha",
+      "originalBytes": 2741489,
+      "finalBytes": 419756,
+      "usage": {
+        "inputTokens": 507,
+        "outputImageTokens": 1372
+      },
+      "traceId": "trace_mrw6mbq9_385cv700",
+      "createdAt": "2026-07-22T14:34:09Z"
     }
   ]
 }

@@ -55,7 +55,7 @@ window.__inlineMenuAudio=(()=>{let ctx=null,master=null,fx=null,music=null,on=fa
 </script>
 <script>
 (async()=>{
-const v='cultivation-audio-ui-r2-20260722150000';
+const v='cultivation-relics-current-r3-20260722173000';
 const bootLoading=window.ArcaneBootLoading=(()=>{
   let done=false,last=0;
   function progress(payload,force=false){
@@ -80,6 +80,13 @@ const bootLoading=window.ArcaneBootLoading=(()=>{
 })();
 const scripts=[
 'r25-storage-sync-v7-mode-select-cache-r29r3.js','r25-affix-scythe-v4-hpflat-cache-r29r1.js','r25-equip-data-v5-gunslinger-cache-r29r1.js','r25-season-scythe-v8-safe-start-cb20260620.js','r25-progression-scythe-v8-gunslinger-cache-r29r1.js','r25-redeem-scythe-v11-delete-compensation-r16.js','r25-save-transfer-scythe-v5-cb20260618p-prod20260618r2-a4653898-force20260619cleanr1.js','r25-equipment-scythe-v18-gunslinger-cache-r29r2.js','r25-unique-fx-core-v4-cb20260618r-prod20260618r2-db6771c6-force20260619cleanr1.js','r25-unique-fx-update-v4-cb20260618r-prod20260618r2-8d76287b-force20260619cleanr1.js','r25-unique-fx-v4-cb20260618r-prod20260618r2-c35146ca-force20260619cleanr1.js','cultivation-music.js','r25-game-core-scythe-v31-gunslinger-cache-r29r4.js','spine-assets-current.js','r25-settings-sync-r29r1.js','r25-game-combat-scythe-v9-gunslinger-cache-r29r1.js','r25-evolution-tuning-v2-cb20260618p-prod20260618r2-21e53b3d-force20260619cleanr1.js','r25-game-render-scythe-v27-isolated-cache-r29r2.js','r25-rift-scythe-v26-gunslinger-cache-r29r2.js','r25-cosmetics-shop-scythe-v10-gunslinger-cache-r29r2.js','r25-pet-looter-v5-quiet-preload-cache-r29r1.js','r25-game-ui-scythe-v20-gunslinger-cache-r29r2.js','r25-town-hub-v2-stone-cache-r4.js','r25-rift-paladin-skills-v4-cb20260618p-prod20260618r2-32d1cb0c-force20260619cleanr1.js','r25-rift-webgl-assets-v1.js','r25-rift-webgl-beam-asset-v1.js','r25-rift-webgl-projectile-assets-v1.js','r25-rift-webgl-skill-assets-v1.js','r25-rift-webgl-player-gunslinger-assets-v1.js','r25-rift-webgl-renderer-v14-latest-only-cache-r29r1.js','r25-webgl-effect-sequence-assets-v1.js','r25-webgl-effect-sequences-v1.js','r25-perf-spawn-scythe-v6-webglpass-r29r1.js','r25-boss-pacing-scythe-v1-cb20260619-691e34e8-force20260619cleanr1.js','r25-rift-leaderboard-scythe-v4-scroll-cb20260620.js','r25-ranger-blade-fx-scythe-v1-cb20260619-17c40349-force20260619cleanr1.js','r25-sequence-impact-tags-v1.js','r25-combat-icon-ui-v1-cb20260619-1cbd6cc2-force20260619cleanr1.js','r25-manual-save-slots-v2-manage-cb20260620.js','r25-endless-balance-v2-cache-r29r1-cb20260629.js','r25-endless-perf-v5-fxperf-r29r1.js','r25-endless-checkpoint-v2-cache-r29r1-cb20260629.js','r25-start-tip-typewriter-v2-only-cb20260620.js','r25-open-world-chunks-v1.js','r25-open-world-ai-bots-v1.js','cultivation-theme-data.js','spine-characters-config.js','cultivation-theme.js','vendor/spine-webgl-3.8.95.js','spine-webgl-renderer.js','spine-characters.js','spine-town-renderer.js'];
+for(const name of ['cultivation-theme-data.js','spine-characters-config.js','cultivation-theme.js']){
+  const index=scripts.indexOf(name);
+  if(index>=0)scripts.splice(index,1);
+}
+const coreIndex=scripts.indexOf('r25-game-core-scythe-v31-gunslinger-cache-r29r4.js');
+scripts.splice(coreIndex,0,'cultivation-theme-data.js','spine-characters-config.js');
+scripts.splice(coreIndex+3,0,'cultivation-theme.js');
 const obsolete='r25-webgl-effect-sequence-assets-v1.js';
 const obsoleteIndex=scripts.indexOf(obsolete);
 if(obsoleteIndex>=0)scripts.splice(obsoleteIndex,1);
@@ -123,6 +130,8 @@ try{
       message:'正在加载修仙世界',
     },i===scripts.length-1);
   }
+  window.CultivationTheme?.applyData?.();
+  window.renderClassCards?.();
   console.info('[ArcaneBoot] scripts loaded',scripts.length,preferScriptTag?'tag':'fetch');
   bootLoading.progress({phase:'runtime_initializing',message:'正在连接网络存档'},true);
   const originalError=window.setLoadError;
