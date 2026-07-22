@@ -1,16 +1,21 @@
 .hud.hudCollapsed{
-  min-width:204px!important;
-  max-width:min(82vw,240px)!important;
+  width:220px!important;
+  min-width:220px!important;
+  max-width:min(82vw,220px)!important;
   overflow:visible!important;
+  contain:layout!important;
 }
 .hud.hudCollapsed #hudHp,
 .hud.hudCollapsed #hudResource,
 .hud.hudCollapsed #hudBoss{
   box-sizing:border-box!important;
-  width:204px!important;
-  min-width:204px!important;
-  max-width:204px!important;
+  grid-column:1!important;
+  grid-row:auto!important;
+  width:220px!important;
+  min-width:220px!important;
+  max-width:220px!important;
   overflow:visible!important;
+  contain:layout!important;
 }
 .hud.hudCollapsed .bar label{
   display:grid!important;
@@ -34,14 +39,39 @@
 }
 @media (orientation:portrait){
   .hud.hudCollapsed{
-    min-width:196px!important;
-    max-width:min(86vw,230px)!important;
+    width:204px!important;
+    min-width:204px!important;
+    max-width:min(86vw,204px)!important;
   }
   .hud.hudCollapsed #hudHp,
   .hud.hudCollapsed #hudResource,
   .hud.hudCollapsed #hudBoss{
-    width:196px!important;
-    min-width:196px!important;
-    max-width:196px!important;
+    width:204px!important;
+    min-width:204px!important;
+    max-width:204px!important;
+  }
+}
+
+.bossWarn{
+  top:14%!important;
+  max-width:min(76vw,420px)!important;
+  padding:4px 8px!important;
+  border-width:1px!important;
+  border-radius:0!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+  text-align:center!important;
+  text-shadow:0 1px 2px #000!important;
+  box-shadow:0 0 10px rgba(239,68,68,.28)!important;
+  animation:none!important;
+  white-space:nowrap!important;
+}
+@media (orientation:portrait){
+  .bossWarn{
+    top:17%!important;
+    max-width:88vw!important;
+    padding:3px 6px!important;
+    font-size:10px!important;
   }
 }
