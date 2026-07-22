@@ -2,7 +2,7 @@
   'use strict';
 
   const data = window.CultivationThemeData;
-  const { classes, skills, evolutions, relicNames, artifactNames, replacements } = data;
+  const { classes, skills, evolutions, relicNames, artifacts, replacements } = data;
 
   function rewrite(value) {
     let text = String(value);
@@ -50,9 +50,11 @@
         EVOLUTIONS[id].desc = rewrite(EVOLUTIONS[id].desc);
       }
     });
-    window.ARTIFACTS?.forEach((item, index) => {
-      if (artifactNames[index]) item[1] = artifactNames[index];
-      item[2] = rewrite(item[2]);
+    const artifactList = typeof ARTIFACTS !== 'undefined' ? ARTIFACTS : window.ARTIFACTS;
+    artifactList?.forEach(item => {
+      const themed = artifacts[item[0]];
+      if (themed) [item[1], item[2]] = themed;
+      else item[2] = rewrite(item[2]);
     });
     window.RELIC_TREE && Object.values(RELIC_TREE).flat().forEach(node => {
       node[1] = relicNames[node[0]] || rewrite(node[1]);

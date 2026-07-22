@@ -1,0 +1,47 @@
+.hud.hudCollapsed{
+  min-width:204px!important;
+  max-width:min(82vw,240px)!important;
+  overflow:visible!important;
+}
+.hud.hudCollapsed #hudHp,
+.hud.hudCollapsed #hudResource,
+.hud.hudCollapsed #hudBoss{
+  box-sizing:border-box!important;
+  width:204px!important;
+  min-width:204px!important;
+  max-width:204px!important;
+  overflow:visible!important;
+}
+.hud.hudCollapsed .bar label{
+  display:grid!important;
+  grid-template-columns:auto max-content!important;
+  gap:6px!important;
+  align-items:center!important;
+  min-width:0!important;
+  overflow:visible!important;
+}
+.hud.hudCollapsed .bar label span:last-child,
+.hud.hudCollapsed #resTxt,
+.hud.hudCollapsed #hpTxt,
+.hud.hudCollapsed #bossTxt{
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-align:right!important;
+}
+.hud.hudCollapsed .bar .track{
+  width:100%!important;
+  min-width:0!important;
+}
+@media (orientation:portrait){
+  .hud.hudCollapsed{
+    min-width:196px!important;
+    max-width:min(86vw,230px)!important;
+  }
+  .hud.hudCollapsed #hudHp,
+  .hud.hudCollapsed #hudResource,
+  .hud.hudCollapsed #hudBoss{
+    width:196px!important;
+    min-width:196px!important;
+    max-width:196px!important;
+  }
+}
