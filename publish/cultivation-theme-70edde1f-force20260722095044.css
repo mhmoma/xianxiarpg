@@ -1,0 +1,149 @@
+:root {
+  --cultivation-ink: #07110f;
+  --cultivation-jade: #2f7668;
+  --cultivation-jade-light: #8fd8d0;
+  --cultivation-gold: #d7b968;
+  --cultivation-cinnabar: #9f2f2f;
+}
+
+html,
+body {
+  background: var(--cultivation-ink);
+  color: #f4f0dc;
+}
+
+.game {
+  background:
+    linear-gradient(155deg, rgba(143, 216, 208, .08), transparent 34%),
+    linear-gradient(25deg, rgba(159, 47, 47, .09), transparent 42%),
+    #07110f;
+}
+
+.game:before {
+  background:
+    repeating-linear-gradient(120deg, transparent 0 34px, rgba(215, 185, 104, .035) 35px 36px),
+    linear-gradient(180deg, rgba(18, 60, 54, .18), transparent 46%);
+}
+
+.coverReady .coverOnly,
+.loadingArtReady .loadingScreen {
+  background-image: url('./assets/generated/cultivation-cover.9b2f3725.webp') !important;
+  background-position: center 24% !important;
+  background-size: cover !important;
+}
+
+.coverMenu {
+  background: linear-gradient(180deg, transparent, rgba(7, 17, 15, .76) 32%, rgba(7, 17, 15, .97)) !important;
+}
+
+.coverMenu:before {
+  content: "✦  太虚问道  ✦" !important;
+  color: #f2d88a !important;
+}
+
+.title,
+.card h2,
+.choice h2,
+.pill b,
+.bar label span:last-child {
+  color: #f2d88a !important;
+  text-shadow: 0 2px 5px #07110f, 0 0 14px rgba(215, 185, 104, .28) !important;
+}
+
+.sub,
+.card p,
+.choice p,
+.loadingBox p {
+  color: #c7ddd5 !important;
+}
+
+.panel,
+.card,
+.choice,
+button {
+  border-color: rgba(215, 185, 104, .42) !important;
+  background:
+    linear-gradient(180deg, rgba(31, 75, 66, .72), rgba(7, 17, 15, .94)) !important;
+  box-shadow:
+    0 0 0 1px rgba(26, 49, 42, .9),
+    0 12px 28px rgba(0, 0, 0, .42),
+    inset 0 0 24px rgba(143, 216, 208, .08) !important;
+}
+
+.panel {
+  background:
+    linear-gradient(180deg, rgba(18, 60, 54, .97), rgba(5, 14, 12, .99)) !important;
+}
+
+.startBtn {
+  background: linear-gradient(180deg, #efd989, #a8752d 52%, #594018) !important;
+  border-color: #f7e7a9 !important;
+  color: #121b16 !important;
+}
+
+.ghostBtn,
+.modeBtn {
+  background: linear-gradient(180deg, rgba(35, 91, 80, .86), rgba(7, 20, 17, .94)) !important;
+  color: #f4f0dc !important;
+}
+
+.pill,
+.bar,
+.loadingBox {
+  border-color: rgba(215, 185, 104, .5) !important;
+  background: linear-gradient(180deg, rgba(18, 60, 54, .88), rgba(5, 14, 12, .92)) !important;
+}
+
+.xpfill,
+.resourceBar .resfill,
+.loadingFill {
+  background: linear-gradient(90deg, #2f7668, #8fd8d0, #d7b968) !important;
+}
+
+.bossfill {
+  background: linear-gradient(90deg, #6f2020, #b94335, #d7b968) !important;
+}
+
+.joystick {
+  background: radial-gradient(circle, rgba(143, 216, 208, .2), rgba(18, 60, 54, .48), rgba(5, 14, 12, .78)) !important;
+  border-color: rgba(215, 185, 104, .5) !important;
+}
+
+.stick {
+  background: radial-gradient(circle, #f2d88a, #2f7668 62%, #102d27) !important;
+}
+
+.cultivationPortrait {
+  width: 100%;
+  height: 100%;
+  background-size: 300% 200%;
+  background-repeat: no-repeat;
+  background-color: #07110f;
+  filter: saturate(.94) contrast(1.05);
+}
+
+.portrait {
+  border-color: rgba(215, 185, 104, .38) !important;
+  background: #07110f !important;
+}
+
+.mapCard,
+.treeNode,
+.eqCard,
+.bagCell {
+  background:
+    linear-gradient(180deg, rgba(47, 118, 104, .22), rgba(7, 17, 15, .88)) !important;
+}
+
+.notice,
+.modeTip,
+.rewardHint {
+  border-color: rgba(215, 185, 104, .42) !important;
+  color: #f2d88a !important;
+}
+
+.seasonStoryBox,
+.seasonRules {
+  border-color: rgba(215, 185, 104, .3) !important;
+  background: rgba(7, 17, 15, .74) !important;
+}

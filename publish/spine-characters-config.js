@@ -21,12 +21,12 @@
 
   window.CultivationSpineConfig = {
     classes: {
-      paladin: make('paladin', 'cha_6075', 108),
-      mage: make('mage', 'cha_2134', 108),
-      ranger: make('ranger', 'cha_2073', 104),
-      gunslinger: make('gunslinger', 'cha_4245', 118, 'skill_ex'),
-      lewdSaintess: make('lewd-saintess', 'cha_60501', 110),
-      scytheMaiden: make('scythe-maiden', 'cha_5106', 116, 'skill_ex'),
+      paladin: make('paladin', 'cha_6075', 84),
+      mage: make('mage', 'cha_2134', 84),
+      ranger: make('ranger', 'cha_2073', 81),
+      gunslinger: make('gunslinger', 'cha_4245', 92, 'skill_ex'),
+      lewdSaintess: make('lewd-saintess', 'cha_60501', 86),
+      scytheMaiden: make('scythe-maiden', 'cha_5106', 90, 'skill_ex'),
     },
     speeds: {
       idle: 1,
