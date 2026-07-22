@@ -2,7 +2,6 @@
   'use strict';
 
   const data = window.CultivationThemeData;
-  const ROSTER = data.roster;
   const { classes, skills, evolutions, relicNames, artifactNames, replacements } = data;
 
   function rewrite(value) {
@@ -106,14 +105,15 @@
   }
   function renderClasses() {
     const order = ['paladin', 'mage', 'ranger', 'gunslinger', 'lewdSaintess', 'scytheMaiden'];
-    const pos = { paladin: '0% 0%', mage: '50% 0%', ranger: '100% 0%', lewdSaintess: '0% 100%', scytheMaiden: '50% 100%', gunslinger: '100% 100%' };
+    const portraits = window.CultivationSpineConfig?.classes || {};
     const root = document.getElementById('classCards');
     if (!root || !window.Progression) return;
     root.innerHTML = order.filter(id => CLASSES[id]).map(id => {
       const cls = CLASSES[id], boosted = Progression.applyClass(id, cls);
       const locked = cls.dlc && !ownsDlc(id);
+      const portrait = portraits[id]?.preview || data.roster;
       return `<button class="card classCard ${id} ${locked ? 'locked' : ''}" data-c="${id}">
-        <div class="portrait cultivationPortrait" style="background-image:url('${ROSTER}');background-position:${pos[id]}"></div>
+        <div class="portrait cultivationPortrait" style="background-image:url('${portrait}');background-position:center;background-size:contain"></div>
         <h2>${locked ? '秘传 · ' : ''}${cls.cn}</h2>
         <p><b>道基</b> 气血 ${boosted.hp} / 身法 ${Math.round(boosted.spd)} / 道威 ${boosted.dmg.toFixed(2)}</p>
         <p><b>本命功法</b> ${INFO[cls.skill][0]}${boosted.startXp ? ` / 初始灵气 +${boosted.startXp}` : ''}</p>
