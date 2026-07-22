@@ -21,7 +21,8 @@
       "Bash(node --check \"publish/cultivation-theme-data.js\")",
       "Bash(node --check \"publish/cultivation-theme.js\")",
       "Bash(python3:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(LC_ALL=C grep -nP \"[^\\\\x00-\\\\x7f]| \")"
     ]
   }
 }
