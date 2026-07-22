@@ -34,13 +34,45 @@
     },
   };
   const SCALE = [0, 2, 5, 7, 9];
+  const BGM_SRC = './bgm/mystic-theme.mp3?v=cultivation-audio-r2';
 
   function create({ ctx, destination }) {
     let timer = 0;
     let token = 0;
     let state = null;
+    let volume = 1;
+    let bgm = null;
+    let playWarningShown = false;
     const active = new Set();
 
+    function ensureBgm() {
+      if (bgm) return bgm;
+      bgm = new Audio(BGM_SRC);
+      bgm.loop = true;
+      bgm.preload = 'auto';
+      bgm.playsInline = true;
+      bgm.addEventListener('error', () => {
+        console.warn('仙乐底轨加载失败，继续使用职业旋律');
+      }, { once: true });
+      return bgm;
+    }
+    function syncBgmVolume() {
+      if (!bgm) return;
+      const mix = state?.mode === 'battle' ? .5 : .62;
+      bgm.volume = Math.max(0, Math.min(1, volume * mix));
+    }
+    function resumeBgm() {
+      if (!state || volume <= 0) return;
+      const media = ensureBgm();
+      syncBgmVolume();
+      if (media.paused === false) return;
+      const pending = media.play();
+      pending?.catch?.(error => {
+        if (playWarningShown) return;
+        playWarningShown = true;
+        console.warn('仙乐等待玩家再次点击解锁:', error.message);
+      });
+    }
     function frequency(path, degree, octave = 0) {
       const index = ((degree % 5) + 5) % 5;
       const span = Math.floor(degree / 5);
@@ -113,17 +145,17 @@
       const motif = mode === 'battle' ? path.battle : path.menu;
       const density = mode === 'battle' ? 8 : 4;
       const step = beat * (mode === 'battle' ? .5 : 1);
-      voice(frequency(path, path.bass[barIndex % 4], -1), start, beat * 3.8, 'sine', .055, .08, 520);
+      voice(frequency(path, path.bass[barIndex % 4], -1), start, beat * 3.8, 'sine', .085, .08, 520);
       for (let i = 0; i < density; i += 1) {
         const degree = motif[(barIndex * density + i) % motif.length];
         const at = start + i * step;
-        instrument(path.lead, frequency(path, degree, 1), at, mode === 'battle' ? .075 : .065);
-        if (mode === 'battle' && i % 2 === 0) drum(frequency(path, path.bass[(i / 2) % 4], -2), at, .1);
+        instrument(path.lead, frequency(path, degree, 1), at, mode === 'battle' ? .12 : .095);
+        if (mode === 'battle' && i % 2 === 0) drum(frequency(path, path.bass[(i / 2) % 4], -2), at, .14);
       }
       for (let i = 0; i < 4; i += 1) {
         const at = start + i * beat;
-        if (mode === 'menu' && i % 2 === 0) instrument(path.accent, frequency(path, motif[i], 1), at + beat * .48, .045);
-        if (mode === 'battle' && i % 2 === 1) instrument(path.accent, frequency(path, motif[i * 2], 1), at + beat * .72, .04);
+        if (mode === 'menu' && i % 2 === 0) instrument(path.accent, frequency(path, motif[i], 1), at + beat * .48, .065);
+        if (mode === 'battle' && i % 2 === 1) instrument(path.accent, frequency(path, motif[i * 2], 1), at + beat * .72, .06);
       }
       return beat * 4;
     }
@@ -135,11 +167,16 @@
       const now = ctx.currentTime;
       active.forEach(node => { try { node.stop(now + .06); } catch (_) {} });
       active.clear();
+      try { bgm?.pause(); } catch (_) {}
     }
     function start(mode, classId = 'paladin') {
-      if (state?.mode === mode && state?.classId === classId && timer) return;
+      if (state?.mode === mode && state?.classId === classId && timer) {
+        resumeBgm();
+        return;
+      }
       stop();
       state = { mode, classId, bar: 0 };
+      resumeBgm();
       const runToken = token;
       const loop = () => {
         if (!state || runToken !== token) return;
@@ -148,7 +185,13 @@
       };
       loop();
     }
-    return { start, stop };
+    function setVolume(next) {
+      volume = Math.max(0, Math.min(1, Number(next) || 0));
+      syncBgmVolume();
+      if (volume > 0) resumeBgm();
+      else try { bgm?.pause(); } catch (_) {}
+    }
+    return { start, stop, resume: resumeBgm, setVolume };
   }
 
   window.CultivationMusic = { create, paths: Object.keys(PATHS) };

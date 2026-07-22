@@ -297,3 +297,171 @@ html body .mapCard:not(#ui-square-a):not(#ui-square-b)::after{
     grid-column: 1;
   }
 }
+
+.musicToggle {
+  position: absolute !important;
+  top: max(12px, env(safe-area-inset-top)) !important;
+  right: max(12px, env(safe-area-inset-right)) !important;
+  z-index: 38 !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(242, 216, 138, .72) !important;
+  border-radius: 0 !important;
+  background: rgba(7, 31, 26, .82) !important;
+  color: #f2d88a !important;
+  font-size: 23px !important;
+  line-height: 1 !important;
+  box-shadow: inset 0 0 14px rgba(143, 216, 208, .12), 0 6px 18px rgba(0, 0, 0, .34) !important;
+  backdrop-filter: blur(7px);
+}
+
+.musicToggle.muted {
+  color: #80958d !important;
+  border-color: rgba(143, 216, 208, .3) !important;
+  background: rgba(5, 14, 12, .72) !important;
+}
+
+body.townHubActive .musicToggle {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+
+html body #classSelect.townMode,
+html body #classSelect.townMode .classPanel,
+html body .townWrap,
+html body .townLoadingMask {
+  background: #07110f !important;
+}
+
+html body .townHud,
+html body .townLoading {
+  border: 1px solid rgba(215, 185, 104, .58) !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, rgba(18, 60, 54, .92), rgba(5, 14, 12, .94)) !important;
+  color: #f2d88a !important;
+  box-shadow: inset 0 0 16px rgba(143, 216, 208, .1), 0 8px 22px rgba(0, 0, 0, .38) !important;
+}
+
+html body .townJoy {
+  background: radial-gradient(circle, rgba(143, 216, 208, .2), rgba(18, 60, 54, .62), rgba(5, 14, 12, .86)) !important;
+  border-color: rgba(215, 185, 104, .52) !important;
+  box-shadow: inset 0 0 26px rgba(143, 216, 208, .12), 0 8px 24px rgba(0, 0, 0, .4) !important;
+}
+
+html body .townStick {
+  background: radial-gradient(circle, #f2d88a, #2f7668 64%, #102d27) !important;
+  border-color: rgba(247, 231, 169, .72) !important;
+}
+
+html body #riftEditorModal .riftEditorModalPanel,
+html body #riftEditorModal .riftEditor {
+  border-color: rgba(215, 185, 104, .52) !important;
+  background: linear-gradient(180deg, rgba(18, 60, 54, .98), rgba(5, 14, 12, .99)) !important;
+}
+
+html body #riftEditorModal .riftEditorCompactHead {
+  border-color: rgba(215, 185, 104, .46) !important;
+  background: linear-gradient(90deg, rgba(159, 47, 47, .3), rgba(47, 118, 104, .48)) !important;
+  color: #f2d88a !important;
+}
+
+html body #riftEditorModal .riftEditorCompactHead span,
+html body #riftEditorModal .riftMiniBtn span {
+  color: #bfe3d9 !important;
+}
+
+html body #riftEditorModal .riftMiniBtn,
+html body #riftEditorModal .riftSavedBuild button {
+  border-radius: 0 !important;
+}
+
+html body #riftEditorModal .riftMiniBtn.ready {
+  outline: 2px solid rgba(242, 216, 138, .9) !important;
+  background: linear-gradient(180deg, #3a8a76, #174d42) !important;
+  color: #fff4c6 !important;
+  box-shadow: 0 0 16px rgba(143, 216, 208, .34), inset 0 0 12px rgba(242, 216, 138, .12) !important;
+}
+
+html body .skillTip {
+  border: 1px solid rgba(215, 185, 104, .78) !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, #173e36, #050e0c) !important;
+  color: #f4f0dc !important;
+}
+
+html body #equipmentPanel .panel,
+html body #equipmentPanel #equipGrid,
+html body #equipmentPanel #equipSlots {
+  border-color: rgba(215, 185, 104, .42) !important;
+  background: linear-gradient(180deg, rgba(18, 60, 54, .96), rgba(5, 14, 12, .98)) !important;
+}
+
+html body #equipmentPanel .eqSlot,
+html body #equipmentPanel .eqCard,
+html body #equipmentPanel .equipTabs button {
+  border-radius: 0 !important;
+  border-color: rgba(215, 185, 104, .36) !important;
+  background: linear-gradient(180deg, rgba(47, 118, 104, .22), rgba(7, 17, 15, .9)) !important;
+}
+
+html body #leaderboard .panel {
+  border: 1px solid rgba(215, 185, 104, .72) !important;
+  border-radius: 0 !important;
+  background:
+    repeating-linear-gradient(120deg, transparent 0 34px, rgba(215, 185, 104, .025) 35px 36px),
+    linear-gradient(180deg, #214f45, #0b211c 56%, #050e0c) !important;
+  color: #f4f0dc !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .54), inset 0 0 34px rgba(143, 216, 208, .09) !important;
+}
+
+html body #leaderboard .panel::before,
+html body #leaderboard .panel::after {
+  border-radius: 0 !important;
+  background: linear-gradient(90deg, #102d27, #d7b968 50%, #102d27) !important;
+}
+
+html body #leaderboard .panel .title,
+html body #leaderboard #boardSub,
+html body #leaderboard .boardName,
+html body #leaderboard .boardLv {
+  color: #f2d88a !important;
+  text-shadow: 0 2px 4px #07110f !important;
+}
+
+html body #leaderboard .riftBoardRow {
+  border-radius: 0 !important;
+  border-color: rgba(215, 185, 104, .36) !important;
+  background: linear-gradient(90deg, rgba(47, 118, 104, .18), rgba(215, 185, 104, .08), rgba(47, 118, 104, .18)) !important;
+  color: #f4f0dc !important;
+}
+
+html body #modeBtn,
+html body #skillBtn,
+html body #relicBtn,
+html body #invBtn,
+html body #saveBtn,
+html body #settingsBtn {
+  border: 1px solid rgba(215, 185, 104, .42) !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, rgba(31, 75, 66, .62), rgba(5, 14, 12, .78)) !important;
+  color: #f2d88a !important;
+}
+
+html body #modeBtn.active {
+  outline: 1px solid rgba(242, 216, 138, .72) !important;
+  background: linear-gradient(180deg, rgba(159, 47, 47, .7), rgba(68, 24, 24, .82)) !important;
+}
+
+html body .shopCard,
+html body .costumeCard,
+html body .petPick,
+html body .shopSlot {
+  border-radius: 0 !important;
+  border-color: rgba(215, 185, 104, .36) !important;
+}

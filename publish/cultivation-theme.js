@@ -124,6 +124,41 @@
       if (next !== el.value) el.value = next;
     });
   }
+  function installMusicToggle() {
+    const host = document.querySelector('.game');
+    const slider = document.getElementById('bgmVolume');
+    if (!host || !slider || document.getElementById('musicToggle')) return;
+    const button = document.createElement('button');
+    button.id = 'musicToggle';
+    button.className = 'musicToggle';
+    button.type = 'button';
+    button.dataset.previousVolume = slider.value || '42';
+    const sync = () => {
+      const muted = Number(slider.value) <= 0;
+      button.textContent = muted ? '♩' : '♪';
+      button.classList.toggle('muted', muted);
+      button.setAttribute('aria-pressed', String(muted));
+      button.setAttribute('aria-label', muted ? '开启仙乐' : '静音仙乐');
+      button.title = muted ? '开启仙乐' : '静音仙乐';
+    };
+    button.addEventListener('click', event => {
+      event.stopPropagation();
+      const current = Number(slider.value) || 0;
+      if (current > 0) {
+        button.dataset.previousVolume = String(current);
+        slider.value = '0';
+      } else {
+        slider.value = button.dataset.previousVolume || '42';
+      }
+      slider.dispatchEvent(new Event('input', { bubbles: true }));
+      window.applyBgmVol?.();
+      sync();
+    });
+    slider.addEventListener('input', sync);
+    host.appendChild(button);
+    sync();
+    window.CultivationThemeSyncMusicToggle = sync;
+  }
   function install() {
     applyData();
     window.renderClassCards = renderClasses;
@@ -135,6 +170,7 @@
       window.showNotice = wrapped;
     }
     translateDom();
+    installMusicToggle();
     let busy = false;
     new MutationObserver(records => {
       if (busy) return;
@@ -148,5 +184,10 @@
   }
 
   install();
-  window.CultivationTheme = { rewrite, applyData, renderClasses };
+  window.CultivationTheme = {
+    rewrite,
+    applyData,
+    renderClasses,
+    syncMusicToggle: () => window.CultivationThemeSyncMusicToggle?.(),
+  };
 })();
