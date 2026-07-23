@@ -121,11 +121,82 @@
     tone(90, .18, 'sine', .05, 'fx', .03, 50);
   }
 
+  // —— 走路 / 跑步脚步（全职业共用）——
+  const FOOTSTEP_URL = './sfx/footstep-xiandao-r1.wav?v=foot-r1-20260724';
+  let stepBuf = null;
+  let stepLoad = null;
+  let stepPhase = 0;
+
+  function ensureStepBuf() {
+    if (stepBuf || !audio?.ctx) return stepLoad;
+    if (stepLoad) return stepLoad;
+    stepLoad = fetch(FOOTSTEP_URL, { cache: 'force-cache' })
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error('footstep missing'))))
+      .then((ab) => audio.ctx.decodeAudioData(ab.slice(0)))
+      .then((buf) => { stepBuf = buf; return buf; })
+      .catch((e) => {
+        console.warn('[sfx] footstep wav fallback', e?.message || e);
+        stepLoad = null;
+        return null;
+      });
+    return stepLoad;
+  }
+
+  function footstepSynth() {
+    if (!audio || typeof noise !== 'function' || typeof tone !== 'function') return;
+    const f = 70 + Math.random() * 36;
+    noise(.05, .048 + Math.random() * .02, 0, 'lowpass', 320 + Math.random() * 220);
+    tone(f, .065, 'sine', .035, 'fx', 0, f * .62);
+    noise(.018, .022, .008, 'highpass', 1600 + Math.random() * 800);
+  }
+
+  function playFootstep() {
+    if (!audio?.ctx) return;
+    try { typeof initAudio === 'function' && initAudio(); } catch (_) {}
+    audio.ctx.resume?.();
+    ensureStepBuf();
+    if (stepBuf) {
+      const src = audio.ctx.createBufferSource();
+      const g = audio.ctx.createGain();
+      src.buffer = stepBuf;
+      src.playbackRate.value = .86 + Math.random() * .32;
+      const vol = .11 + Math.random() * .05;
+      const t0 = audio.ctx.currentTime;
+      g.gain.setValueAtTime(vol, t0);
+      g.gain.exponentialRampToValueAtTime(.001, t0 + .14);
+      src.connect(g);
+      g.connect(audio.fx);
+      src.start(t0);
+      return;
+    }
+    footstepSynth();
+  }
+
+  /** 走 / 跑时按间隔踩点；run=true 间隔更短 */
+  function tickFootsteps(moving, dt = 1 / 60, run = true) {
+    if (!moving) {
+      stepPhase = 0;
+      return;
+    }
+    if (!audio) {
+      try { typeof initAudio === 'function' && initAudio(); } catch (_) {}
+      if (!audio) return;
+    }
+    const gap = run ? .28 : .36;
+    stepPhase += Math.max(0, Number(dt) || 0);
+    let guard = 0;
+    while (stepPhase >= gap && guard++ < 3) {
+      stepPhase -= gap;
+      playFootstep();
+    }
+  }
+
   function sfxClassAware(k) {
     if (!audio) return;
     if (k === 'mobHit') return mobHitSfx(false);
     if (k === 'critHit') return mobHitSfx(true);
     if (k === 'hurt') return hurtSfx();
+    if (k === 'step' || k === 'footstep') return playFootstep();
     if (!canPlay(k, .08)) return;
     if (k === 'click') {
       tone(784, .09, 'sine', .05, 'fx', 0, 1175);
@@ -137,6 +208,7 @@
   }
 
   window.sfx = sfxClassAware;
+  window.CultivationSfx = { tickFootsteps, playFootstep, ensureStepBuf };
   try { sfx = sfxClassAware; } catch (_) {}
 
   function wrapDamage() {
@@ -179,5 +251,13 @@
   setTimeout(install, 0);
   setTimeout(install, 400);
 
-  console.info('职业音效已启用：分角色技能音色、打击音、怪物受击音');
+  // 预热脚步采样（有 AudioContext 后）
+  try {
+    document.addEventListener('pointerdown', () => {
+      try { typeof initAudio === 'function' && initAudio(); } catch (_) {}
+      ensureStepBuf();
+    }, { once: true });
+  } catch (_) {}
+
+  console.info('职业音效已启用：分角色技能音色、打击音、怪物受击音、走路音');
 })();
