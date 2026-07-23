@@ -848,6 +848,7 @@
     if (!resolved) return img || null;
     window.imgs = window.imgs || {};
     img = window.imgs[key] || (window.imgs[key] = new Image());
+    img.crossOrigin = 'anonymous';
     const base = String(resolved).split('?')[0].replace(/^\.\//, '');
     const cur = String(img.src || '');
     if (!cur || cur.indexOf(base) < 0) {
@@ -1008,8 +1009,11 @@ function ensureGroundImg(key) {
     if (data) {
       if (!img) {
         img = new Image();
+        img.crossOrigin = 'anonymous';
         window.imgs = window.imgs || {};
         window.imgs[key] = img;
+      } else {
+        img.crossOrigin = 'anonymous';
       }
       if (!img.complete || !img.naturalWidth) {
         if (img.src !== data) {
@@ -2604,7 +2608,10 @@ function ensureGroundImg(key) {
       if (!overlayCultivationPlayer()) hideCombatSpineOverlay();
       return true;
     } catch (e) {
-      console.warn('[PixiCombat] renderFrame failed', e.message);
+      if (!window.__pixiCombatRenderErrorLogged) {
+        window.__pixiCombatRenderErrorLogged = true;
+        console.warn('[PixiCombat] renderFrame failed', e.name, e.message, e.stack);
+      }
       return false;
     }
   }

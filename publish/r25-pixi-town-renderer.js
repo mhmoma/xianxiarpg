@@ -427,6 +427,7 @@
     const key = String(src);
     if (remoteImgCache.has(key)) return remoteImgCache.get(key);
     const im = new Image();
+    im.crossOrigin = 'anonymous';
     im.decoding = 'async';
     im.src = key;
     remoteImgCache.set(key, im);
